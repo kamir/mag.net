@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MAG.net</string>
+    <string name="app_name_synch123">MAG.net SYNCH</string>
+
+
+    <string name="action_settings">Semantic-Context Settings</string>
+    <string name="action_context">GEO-Context Map</string>
+    <string name="action_cls">Clear</string>
+
+    <string name="title_activity_maps">MAG.net GEO-Context</string>
+    <string name="title_activity_settings">MAG.net Semantic settings</string>
+
+    <string name="uploaded">Upload was done!</string>
+
+
+
+    <string name="update_message">We have found a new update to the %s app. If you\'d like to install it, please click the button below.</string>
+    <string name="apply_update">Download update</string>
+
+	<string name="update_footnote">
+        N.B. After the download completes, you must pull down the Status Bar and click on the downloaded apk to install it.
+	</string>
+
+
+</resources>

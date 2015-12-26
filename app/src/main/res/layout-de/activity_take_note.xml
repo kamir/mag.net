@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="0dp"
+    android:paddingLeft="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp" tools:context=".TakeNote"
+    android:id="@+id/a">
+
+    <TextView android:text="POS: " android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <ImageButton
+        android:background="@drawable/photo216"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="+"
+        android:id="@+id/button"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/textView2" />
+
+    <ImageButton
+        android:background="@drawable/coconutdrink32"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textSize="8dp"
+        android:text="CLS"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button5"
+        android:layout_toRightOf="@+id/button5" />
+
+    <ImageButton
+        android:background="@drawable/documents16"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textSize="8dp"
+        android:text="CATn"
+        android:id="@+id/button3"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/button6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:textSize="8dp"
+        android:id="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/abc_input_method_navigation_guard" />
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/upload127"
+        android:text="FPS"
+        android:textSize="8dp"
+        android:id="@+id/button4"
+        android:layout_above="@+id/imageView"
+        android:layout_toRightOf="@+id/button3" />
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/add189"
+        android:text="SMW"
+        android:textSize="8dp"
+        android:id="@+id/button5"
+        android:layout_alignTop="@+id/button4"
+        android:layout_toRightOf="@+id/button4" />
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:background="@drawable/folder250"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="NPn"
+        android:textSize="8dp"
+        android:id="@+id/button6"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/button"
+        android:layout_marginLeft="98dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POI"
+        android:id="@+id/isPOIButton"
+        android:checked="true"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentRight="true" />
+
+
+
+</RelativeLayout>
