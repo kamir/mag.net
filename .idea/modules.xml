@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Etosha.magnet.iml" filepath="$PROJECT_DIR$/Etosha.magnet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend2/backend2.iml" filepath="$PROJECT_DIR$/backend2/backend2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/magnet-backend/magnet-backend.iml" filepath="$PROJECT_DIR$/magnet-backend/magnet-backend.iml" />
     </modules>
   </component>
 </project>

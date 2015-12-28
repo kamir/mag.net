@@ -36,7 +36,7 @@ public class SettingsActivity extends ActionBarActivity {
 
         ContextModel.initTaskTypes();
 
-        ContextModel._initProjects(  ContextModel.currentUser  );
+        ContextModel.initProjects(  ContextModel.currentUser  );
 
 //         ContextModel.initUsers();
 
@@ -47,7 +47,6 @@ public class SettingsActivity extends ActionBarActivity {
  //       list.add("Eric");
  //       list.add("Peter");
         list.add("public");
-
 
         List<String> list2 = ContextModel.getListProjects();
 

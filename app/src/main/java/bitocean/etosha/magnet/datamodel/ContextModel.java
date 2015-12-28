@@ -4,6 +4,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Vector;
 
 import bitocean.etosha.magnet.TakeNote;
+import bitocean.etosha.magnet.helper.AppStorage;
 import bitocean.etosha.magnet.helper.LatLonConvert;
 
 /**
@@ -32,10 +34,11 @@ public class ContextModel implements LocationListener {
     static public final int modelVersion = 1;
     static boolean _runReal = true;  // no tests
 
+    static AppStorage appsto = null;
 
     public void init() {
 
-        AppStorage appsto = new AppStorage();
+        appsto = new AppStorage();
 
         if( usePersonalEntryPoint )
             personalEntryPoint = appsto.loadEntrypointFromSettings();
@@ -46,7 +49,7 @@ public class ContextModel implements LocationListener {
 
         ContextModel.initTaskTypes();
 
-        ContextModel._initProjects( this.getCurrentUser() );
+        ContextModel.initProjects(this.getCurrentUser());
 
         this.setCurrentContext( personalEntryPoint );
     }
@@ -84,6 +87,7 @@ public class ContextModel implements LocationListener {
     private static String currentProject = "default";
 
     /**
+     *
      * Address of default MediaWikiServer
      *
      * No PROTOCOLL
@@ -92,8 +96,9 @@ public class ContextModel implements LocationListener {
      */
     public static String wikiserver1 = "semanpix.de/oldtimer/wiki";
     public static String wikiserver2 = "semanpix.de/opendata/wiki";
+    public static String wikiserver3 = "semanpix.de/mylife/wiki";
 
-    public static String wikiserver = wikiserver1;
+    public static String wikiserver = wikiserver2;
 
     public static String getCurentPageName(){
 
@@ -153,13 +158,17 @@ public class ContextModel implements LocationListener {
 
 
     static private void initWikiListe() {
+
         listWikis = new ArrayList<String>();
-        listWikis.add( wikiserver1 );
+
         listWikis.add( wikiserver2 );
+        listWikis.add( wikiserver1 );
+        listWikis.add( wikiserver3 );
+
     }
 
 
-    public static void _initProjects(String user) {
+    public static void initProjects(String user) {
 
         listProjects = new ArrayList<String>();
 
@@ -344,17 +353,12 @@ public class ContextModel implements LocationListener {
     }
 
 
-    /**
-     *
-     * Here we handle or AppState Storage tasks ...
-     */
-    private class AppStorage {
-        public String loadEntrypointFromSettings() {
 
-            return getDefaultPageName();
 
-        }
-    }
+
+
+
+
 
 
     /**
@@ -378,7 +382,11 @@ public class ContextModel implements LocationListener {
 
         protected Void doInBackground( String... uri ) {
 
+
             DefaultHttpClient httpclient = new DefaultHttpClient();
+
+
+
 
             if ( liste == null )
                liste = new ArrayList<String>();
@@ -386,8 +394,10 @@ public class ContextModel implements LocationListener {
             try {
 
                 HttpGet httpget = new HttpGet(uri[0]); // server
+                httpget.setHeader("Authorization", AppStorage.getAuthorizationString());
 
-                Log.i("###ContextModel###", "request-call::" + httpget.getRequestLine());
+                Log.i("###***ContextModel***###", "request-call ::" + httpget.getRequestLine());
+                Log.i("###***ContextModel***###", "request-auth ::" + AppStorage.getAuthorizationString());
 
                 HttpResponse response = null;
                 try {
@@ -403,6 +413,7 @@ public class ContextModel implements LocationListener {
                     while ((numRead = stream.read(bytes)) >= 0) {
                         x.append(new String(bytes, 0, numRead));
                     }
+                    Log.i("###*** ContextModel ***###", "response-list-data:: (" + x.toString() +")" );
 
                     String s = "(";
 
@@ -422,7 +433,9 @@ public class ContextModel implements LocationListener {
 
                     s = s.concat( ")" );
 
-                    Log.i("###*** ContextModel ***###", "response-list-data::" + x.toString() );
+                    Log.i("###*** ContextModel ***###", "response-list-data:: (" + s.toString() +")" );
+
+                    liste.add("DUMMY");
 
 
                 } catch (ClientProtocolException e) {

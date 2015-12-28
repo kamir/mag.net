@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="bitocean.etosha.magnet.TakeNote"
-            android:label= "@string/app_name" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,12 +31,12 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name="bitocean.etosha.magnet.MultiImageSynchActivity"
             android:icon="@drawable/logo"
@@ -46,9 +46,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -70,7 +68,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="bitocean.etosha.magnet.subactivities.ContextSettingsActivity"
             android:label="@string/title_activity_context_settings"
@@ -79,7 +76,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="bitocean.etosha.magnet.TakeNote" />
         </activity>
-
         <activity
             android:name="bitocean.etosha.magnet.subactivities.SettingsActivity"
             android:icon="@drawable/logo"

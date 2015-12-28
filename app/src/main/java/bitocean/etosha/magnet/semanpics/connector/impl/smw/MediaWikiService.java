@@ -76,6 +76,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.zip.GZIPInputStream;
 
+import bitocean.etosha.magnet.helper.AppStorage;
 import bitocean.etosha.magnet.semanpics.connector.SemanticGraphStore;
 
 /**
@@ -6068,14 +6069,21 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             StrictMode.ThreadPolicy policy = new StrictMode.
                     ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
+
             URL url = new URL( this.getFullURL( "Main_Page" ) );
 
-            Log.i("PING", "Try to cennect to the wikiserver ... " + url );
+            Log.i("PING", "Try to connect to the wikiserver ... " + url );
 
             HttpURLConnection con = (HttpURLConnection) url
                     .openConnection();
+
+            con.setRequestProperty("Authorization", AppStorage.getAuthorizationString());
+//             con.connect();
+
             v = readStream(con.getInputStream());
-        } catch (Exception e) {
+
+        }
+        catch (Exception e) {
             e.printStackTrace();
             v = false;
         }

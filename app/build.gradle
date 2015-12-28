@@ -30,4 +30,5 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.android.support:support-v4:21.0.3'
+    compile project(path: ':backend2', configuration: 'android-endpoints')
 }
