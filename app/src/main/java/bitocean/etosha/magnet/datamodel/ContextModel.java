@@ -184,7 +184,8 @@ public class ContextModel implements LocationListener {
             listProjects.add("Urlaub");
             listProjects.add("Hobby");
             listProjects.add("Alltag");
-            listProjects.add("Lesen/Filme");
+            listProjects.add("Lesen");
+            listProjects.add("Filme");
             listProjects.add("Publikationen");
             listProjects.add("Konferenzen");
             listProjects.add("Reisen");
@@ -215,8 +216,10 @@ public class ContextModel implements LocationListener {
     public static void initTaskTypes() {
         listTaskTypes = new ArrayList<String>();
         listTaskTypes.add("TODO");
-        listTaskTypes.add("Frage / Problem");
-        listTaskTypes.add("Antwort / Lösung");
+        listTaskTypes.add("Problem");
+        listTaskTypes.add("Lösung");
+        listTaskTypes.add("Frage");
+        listTaskTypes.add("Antwort");
         listTaskTypes.add("Vorbereitung");
         listTaskTypes.add("Follow-Up");
         listTaskTypes.add("Erledigt");
