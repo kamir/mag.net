@@ -34,6 +34,22 @@ public interface SemanticGraphStore {
 
 
     /**
+     * The full API-Url is the base for all HTTP-Client interactions ...
+     */
+    public String getAPIUrl();
+
+
+    /************
+     *
+     * The following METHODS REQUIRE Authorisation !!!
+     *
+     *
+     *
+     ************/
+
+
+
+    /**
      * Login to the server via usernam, password pair
      *
      * @param kamir
@@ -41,10 +57,7 @@ public interface SemanticGraphStore {
      */
     public void login(String kamir, char[] chars) throws IOException, Exception;
 
-    /**
-     * The full API-Url is the base for all HTTP-Client interactions ...
-     */
-    public String getAPIUrl();
+
 
     /**
      * Overwrite the content of an existing page in the Graph Store ...

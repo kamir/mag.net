@@ -474,6 +474,8 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -664,8 +666,6 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
         this.mImageView.setImageResource(android.R.color.transparent);
         this.mImageView.setBackgroundColor(Color.TRANSPARENT);
-
-
 
         setImageBorderColor(Color.TRANSPARENT);
 
@@ -870,6 +870,13 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         try {
 
 
+            /**
+             * NOTE: FPS
+             *
+             *    Here we have to ping the FPS Service and not the SMW!!!
+             *
+             */
+            // if ( pingFPS() ) {
             if ( ping() ) {
 
                 notifyStartUploading();
@@ -1109,6 +1116,8 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         // create HttpClient
         HttpClient httpclient = new DefaultHttpClient();
 
+
+
         barProgressDialog.setProgress(25);
 
         Log.i("POST.F ####### ", "***** 2" );
@@ -1123,7 +1132,24 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
             params.put("userfile", bitmap);
 
+
+            /**
+             *
+             * NOTE: FPS
+             * ---------
+             *
+             * This is the upload procedure, which copies the image to the File Processing Service.
+             *
+             * On the server side, we us a PHP script. It is located in the scripts folder in the
+             * backend2 module.
+             *
+             * In Local-Network-Mode we only interact with a MAG.net server inside the locale
+             * environment, no public serves are used in this mode.
+             *
+             */
             String url = "http://www.semanpix.de/test/php/test.php";
+            // String urlLOCALMODE = "http://" + SMWSeverIP + "/magnet/fps/fileUpload.php";
+
             Log.i("POST.F ####### ", "***** 4 " + url );
 
             myClient.post(url, params, new AsyncHttpResponseHandler() {

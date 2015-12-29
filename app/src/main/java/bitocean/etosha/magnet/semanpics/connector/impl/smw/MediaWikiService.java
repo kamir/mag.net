@@ -732,7 +732,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
     {
         // This is POST because markup can be arbitrarily large, as in the size
         // of an article (over 10kb).
-        String response = post(apiUrl + "action=parse", "prop=text&text=" + URLEncoder.encode(markup, "UTF-8"), "parse");
+        String response = _post(apiUrl + "action=parse", "prop=text&text=" + URLEncoder.encode(markup, "UTF-8"), "parse");
         int y = response.indexOf('>', response.indexOf("<text")) + 1;
         int z = response.indexOf("</text>");
         return decode(response.substring(y, z));
@@ -1504,7 +1504,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
         buffer.append(URLEncoder.encode(reason, "UTF-8"));
         buffer.append("&token=");
         buffer.append(URLEncoder.encode(deleteToken, "UTF-8"));
-        String response = post(apiUrl + "action=delete", buffer.toString(), "delete");
+        String response = _post(apiUrl + "action=delete", buffer.toString(), "delete");
 
         // done
         try
@@ -1568,7 +1568,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
         out.append(URLEncoder.encode(reason, "UTF-8"));
         out.append("&token=");
         out.append(URLEncoder.encode(drtoken, "UTF-8"));
-        String response = post(apiUrl + "action=undelete", out.toString(), "undelete");
+        String response = _post(apiUrl + "action=undelete", out.toString(), "undelete");
 
         // done
         try
@@ -1612,7 +1612,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             url.append("&forcelinkupdate");
         String[] temp = constructTitleString(titles);
         for (String x : temp)
-            post(url.toString(), "&titles=" + x, "purge");
+            _post(url.toString(), "&titles=" + x, "purge");
         log(Level.INFO, "purge", "Successfully purged " + titles.length + " pages.");
     }
 
@@ -2287,7 +2287,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             buffer.append("&noredirect=1");
         if (movesubpages && user.isAllowedTo("move-subpages"))
             buffer.append("&movesubpages=1");
-        String response = post(apiUrl + "action=move", buffer.toString(), "move");
+        String response = _post(apiUrl + "action=move", buffer.toString(), "move");
 
         // done
         try
@@ -2382,7 +2382,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
         out.append(temp);
         System.out.println(out);
 
-        String response = post(apiUrl + "action=protect", out.toString(), "protect");
+        String response = _post(apiUrl + "action=protect", out.toString(), "protect");
         try
         {
             checkErrors(response, "post");
@@ -2587,7 +2587,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             buffer.append("&summary=");
             buffer.append(reason);
         }
-        String response = post(apiUrl + "action=rollback", buffer.toString(), "rollback");
+        String response = _post(apiUrl + "action=rollback", buffer.toString(), "rollback");
 
         // done
         try
@@ -2698,7 +2698,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             buffer.append("&bot=1");
         buffer.append("&token=");
         buffer.append(URLEncoder.encode(wpEditToken, "UTF-8"));
-        String response = post(apiUrl + "action=edit", buffer.toString(), "undo");
+        String response = _post(apiUrl + "action=edit", buffer.toString(), "undo");
 
         // done
         try
@@ -3552,7 +3552,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
         buffer.append(URLEncoder.encode(message, "UTF-8"));
         buffer.append("&subject=");
         buffer.append(URLEncoder.encode(subject, "UTF-8"));
-        String response = post(apiUrl + "action=emailuser", buffer.toString(), "emailUser");
+        String response = _post(apiUrl + "action=emailuser", buffer.toString(), "emailUser");
 
         // check for errors
         checkErrors(response, "email");
@@ -3630,7 +3630,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
             data.append("&token=");
             String watchToken = (String)info[i].get("watchtoken");
             data.append(URLEncoder.encode(watchToken, "UTF-8"));
-            post(apiUrl + "action=watch", data.toString(), state);
+            _post(apiUrl + "action=watch", data.toString(), state);
         }
         log(Level.INFO, state, "Successfully " + state + "ed " + Arrays.toString(titles));
     }
@@ -5218,7 +5218,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
      *  @see #multipartPost(java.lang.String, java.util.Map, java.lang.String)
      *  @since 0.24
      */
-    protected String post(String url, String text, String caller) throws IOException
+    protected String _post(String url, String text, String caller) throws IOException
     {
 
         logurl(url, caller);
@@ -5276,9 +5276,15 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
         httpclient.setCookieStore(myCookieStore);
 
 
+
+
+
         try {
 
             HttpPost httppost = new HttpPost( url );
+
+            httppost.setHeader("Authorization", AppStorage.getAuthorizationString());
+
 
             StringEntity entity = new StringEntity(text, "utf-8");
             entity.setContentType("text/plain; charset=utf-8");
@@ -5332,7 +5338,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
      *  @param caller the caller of this method
      *  @return the server response
      *  @throws IOException if a network error occurs
-     *  @see #post(java.lang.String, java.lang.String, java.lang.String)
+     *  @see #_post(java.lang.String, java.lang.String, java.lang.String)
      *  @see <a href="http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.2">Multipart/form-data</a>
      *  @since 0.27
      */
@@ -5843,6 +5849,9 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
 
             if( myCookieStore == null ) myCookieStore = new PersistentCookieStore( appContext);
             myClient.setCookieStore(myCookieStore);
+
+            myClient.addHeader("Authorization", AppStorage.getAuthorizationString());
+
 
             RequestParams params = new RequestParams();
             params.put("key", "value");
@@ -6714,7 +6723,7 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
                 temp.append("&rvdiffto=");
                 temp.append(oldid);
             }
-            String line = post(query + "prop=revisions", temp.toString(), "Revision.diff");
+            String line = _post(query + "prop=revisions", temp.toString(), "Revision.diff");
             // strip extraneous information
             if (line.contains("</diff>"))
             {
