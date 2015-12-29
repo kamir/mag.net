@@ -97,6 +97,7 @@ package bitocean.etosha.magnet.helper;
 import android.location.Location;
 
 import java.lang.Math;
+import java.text.DecimalFormat;
 
 /******************************************************************************
  *	class:						LatLonConvert class
@@ -119,7 +120,10 @@ public class LatLonConvert
     }
 
     public String getSMWLabel() {
-        return getDegree() + "° " + getMinute() + "' " + dfSecond+"\"";
+
+        DecimalFormat df = new DecimalFormat("0.000000");
+        return getDegree() + "° " + getMinute() + "' " + df.format( dfSecond ) +"\"";
+
     }
 
     public static String getSMWLabels (Location location ) {

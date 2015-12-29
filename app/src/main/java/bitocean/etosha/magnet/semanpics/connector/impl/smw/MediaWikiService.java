@@ -5756,8 +5756,9 @@ public class MediaWikiService extends MediaWiki implements Serializable, Semanti
 
                    SyncHttpClient myClient = new SyncHttpClient();
                    // AsyncHttpClient myClient = new AsyncHttpClient();
+                   myClient.addHeader( "Authorization" , AppStorage.getAuthorizationString() );
 
-                   Log.i("POST2Wiki ####### ", "***** 3" );
+            Log.i("POST2Wiki ####### ", "***** 3" );
 
                    if( myCookieStore == null ) myCookieStore = new PersistentCookieStore(appContext);
                    myClient.setCookieStore(myCookieStore);

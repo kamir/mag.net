@@ -1214,13 +1214,13 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         Log.i(TAG, "File: (bitmap) " + bitmap );
 
         String date = format.format( new Date( System.currentTimeMillis() ));
-        String pageText = "[[snaptime:" + date + "]]<br/>\n Linked PixNode:<br/>\n" +
+        String pageText = "[[snaptime::" + date + "]]<br/>\n Linked PixNode:<br/>\n" +
                 " [[File:" + bitmap.getName() + "|320px]]";
 
         if ( context.getCATNODE() ) {
             
+            pageText = pageText + "\n" +  "<br/>[[projectStart::" + date + "| Projektstart:" + date +"]]";
             pageText = pageText + "\n" +  "[[Category:CATNODE]]";
-            pageText = pageText + "\n" +  "[[projectStart::" + date + "| Projektstart:]";
             pageText = pageText  + "\n" +
                        "----\n" +
                        "{{#ask: [[belongsToProject::{{PAGENAME}}]]\n" +
