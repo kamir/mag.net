@@ -16,23 +16,25 @@ public class POI {
     LatLonConvert lat = null;
     LatLonConvert lon = null;
 
-    public POI( String line ) {
+    public POI( String line , int a ) {
 
         init( line );
     }
 
+
     public POI(Location location) {
 
-            String here = LatLonConvert.getSMWLabels(location);
+        String s = LatLonConvert.getPOIString( location );
 
-            Log.i("LOCATOR.SMW", here );
+        Log.i("LOCATOR.SMW", s );
 
-            init( here );
-        }
+        init( s );
+    }
+
 
     public void init( String line ) {
 
-        String[] fields = line.split("[,:]+");
+        String[] fields = line.split(",");
 
         label = fields[0] + "," + fields[1];
 
@@ -88,6 +90,7 @@ public class POI {
          * @return
          */
     public String getLabel() {
+        if ( lat == null || lon == null ) return "LOCATION NOT KNOWN";
         this.label = lat.getSMWLabel() + " " + lon.getSMWLabel();
         return label;
     }

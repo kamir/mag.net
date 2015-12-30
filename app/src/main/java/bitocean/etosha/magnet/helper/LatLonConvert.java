@@ -119,6 +119,28 @@ public class LatLonConvert
         return getDegree() + "° " + getMinute() + "m " + s+"s";
     }
 
+    public static String getPOIString( Location a ) {
+
+        LatLonConvert cLat = new LatLonConvert( a.getLatitude() );
+        LatLonConvert cLon = new LatLonConvert( a.getLongitude() );
+
+        cLat.fromDec2DMS();
+        cLon.fromDec2DMS();
+
+        String col3 = cLat.getSMWLabel2().replace(',','.');
+        String col4 = cLon.getSMWLabel2().replace(',','.');
+
+        return "col1,col2," + col3 + "," + col4;
+
+    }
+
+    public String getSMWLabel2() {
+
+        DecimalFormat df = new DecimalFormat("00.00");
+            return (int)getDegree() + "° " + (int)getMinute() + "' " + df.format( dfSecond ) +"\" X";
+
+    }
+
     public String getSMWLabel() {
 
         DecimalFormat df = new DecimalFormat("0.000000");

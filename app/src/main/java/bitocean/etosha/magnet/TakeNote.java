@@ -1220,6 +1220,12 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
     }
 
+    /**
+     *  In this method we create the WIKI page content. Later we need some better
+     *  template based MarkDown rendering for the context.
+     *
+     *  Let's see how it works !!!
+     */
     private String _pagetext(File bitmap) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -1243,7 +1249,9 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         }
 
         if ( isPOI() ) {
-            pageText = pageText + "\n" + context.getGeoContextAnnotation();
+
+            // here we take a default String or the real location ... as POI.
+            pageText = pageText + "\n" + context.getGeoContextAnnotation().getLabel();
             pageText = pageText + "\n" +  "[[Category:POI]]";
         }
 

@@ -240,26 +240,27 @@ public class ContextModel implements LocationListener {
 
     static double[] d = new double[2];
 
-    public static String getGeoContextAnnotation() {
+    public static POI getGeoContextAnnotation() {
+
+        POI h = null;
 
         if ( location == null ) {
-            d[0] = 51.316667;
-            d[1] = 11.933333;
+
+            String here = "DEFAULT LOCATION 1,01 JANUARY 2016,52° 11' 00.00 N,11° 12' 11.11 E, 340.5,_getGeoContextAnnotation\", 1";
+            h = new POI( here, 1 );
+
         }
         else {
-            d[0] = 51.316667;
-            d[1] = 11.933333;
+
+            h = new POI( location );
+
         }
 
+        String hereSTRING = LatLonConvert.getSMWLabels(location);
 
-        location.setLatitude( d[0] );
-        location.setLongitude( d[1] );
+        Log.i("LOCATOR.SMW (hereSTRING) => ", hereSTRING );
 
-        String here = LatLonConvert.getSMWLabels(location);
-
-        Log.i("LOCATOR.SMW", here );
-
-        return here;
+        return h;
     }
 
 
@@ -271,7 +272,7 @@ public class ContextModel implements LocationListener {
 
         if ( location == null ) {
 
-            here = new POI("DEFAULT LOCATION,01 JANUARY 2016,52° 11' 00.00 N,11° 12' 11.11 E, 340.5,DEFAULT;LOCATION");
+            here = new POI("DEFAULT LOCATION ***,01 JANUARY 2016,52° 11' 00.00 N,11° 12' 11.11 E, 340.5,DEFAULT;LOCATION", 1);
 
         }
         else {

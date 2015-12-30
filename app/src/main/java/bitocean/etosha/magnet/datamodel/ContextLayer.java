@@ -37,7 +37,7 @@ public class ContextLayer {
 
         // convert all lines
         for( String line : lines ) {
-            pois.add( new POI( line ) );
+            pois.add( new POI( line, 1 ) );  // version 1 of POI query
         }
 
         return pois;
