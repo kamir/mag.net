@@ -30,7 +30,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -503,6 +502,11 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
             case R.id.action_vl:
                 viewRecentChanges();
                 return true;
+            // https://github.com/kamir/mag.net/wiki/MAG.net---Quickstart-Guide
+            case R.id.action_help:
+                viewHelpInWiki();
+                return true;
+
 //            case R.id.button4:
 //                uploadImageToFPS();
 //                return true;
@@ -522,6 +526,15 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         openBrowser( urlRC );
 
     }
+
+    private void viewHelpInWiki() {
+
+        String urlRC = "https://github.com/kamir/mag.net/wiki/MAG.net---Quickstart-Guide";
+
+        openBrowser( urlRC );
+
+    }
+
 
     private void modifyContextModel() {
 
@@ -634,7 +647,7 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
      * @return
      */
     public static POI getContextualLocation() {
-        POI here = context.getGeoCOntext();
+        POI here = context.getGeoContext();
         return here;
     }
 

@@ -111,13 +111,13 @@ public class ContextModel implements LocationListener {
 
     String filenameListPROJECTS = "CML_Projects";
 
-    public Location location;
+    public static Location location;
 
     public static void setCurrentUser(String currentUser) {
         ContextModel.currentUser = currentUser;
     }
 
-    public static void setCurrentProject(String currentProject) {
+    public static void  setCurrentProject(String currentProject) {
         ContextModel.currentProject = currentProject;
     }
 
@@ -238,9 +238,9 @@ public class ContextModel implements LocationListener {
      *
      */
 
-    double[] d = new double[2];
+    static double[] d = new double[2];
 
-    public String getGeoContextAnnotation() {
+    public static String getGeoContextAnnotation() {
 
         if ( location == null ) {
             d[0] = 51.316667;
@@ -251,7 +251,6 @@ public class ContextModel implements LocationListener {
             d[1] = 11.933333;
         }
 
-        Location location = new Location("magnet.tool");
 
         location.setLatitude( d[0] );
         location.setLongitude( d[1] );
@@ -266,24 +265,23 @@ public class ContextModel implements LocationListener {
 
 
 
-    public POI getGeoCOntext() {
+    public POI getGeoContext() {
 
-        POI here = new POI();
+        POI here = null;
 
         if ( location == null ) {
 
-            d[0] = 50.0;
-            d[1] = 11.0;
+            here = new POI("DEFAULT LOCATION,01 JANUARY 2016,52° 11' 00.00 N,11° 12' 11.11 E, 340.5,DEFAULT;LOCATION");
 
         }
- 
+        else {
 
-        String l = "We are here: " + d[0] + " - " + d[1];
+            here = new POI( location );
 
-        Log.i("LOCATOR", l );
+        }
 
-        here.location = d;
-        here.label = l;
+
+        Log.i("### WE ARE HERE : ###", here.getLabel() );
 
         return here;
 

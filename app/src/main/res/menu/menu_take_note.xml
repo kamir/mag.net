@@ -9,10 +9,18 @@
 
     <item android:id="@+id/action_context"
         android:title="@string/action_context"
-        android:orderInCategory="101" app:showAsAction="never" />
+        android:orderInCategory="101"
+        app:showAsAction="never" />
 
     <item android:id="@+id/action_vl"
         android:title="View Log"
-        android:orderInCategory="102" app:showAsAction="never" />
+        android:orderInCategory="102"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_help"
+        android:title="@string/action_help"
+        android:orderInCategory="103"
+        app:showAsAction="never" />
+
 
 </menu>

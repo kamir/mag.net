@@ -53,8 +53,8 @@
         android:textSize="8dp"
         android:text="CLS"
         android:id="@+id/button2"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true" />
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         style="?android:attr/buttonStyleSmall"
@@ -65,8 +65,7 @@
         android:textSize="8dp"
         android:id="@+id/button6"
         android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/button2"
-        />
+        android:layout_toStartOf="@+id/button3" />
 
     <ImageButton
         android:background="@drawable/documents16"
@@ -75,8 +74,8 @@
         android:textSize="8dp"
         android:text="CATn"
         android:id="@+id/button3"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_below="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:background="@drawable/photo216"
@@ -84,8 +83,8 @@
         android:layout_height="40dp"
         android:text="+"
         android:id="@+id/button"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/button3"
+        android:layout_alignParentStart="true" />
 
 
 
@@ -98,7 +97,7 @@
         android:textSize="8dp"
         android:id="@+id/button4"
         android:layout_above="@+id/textView2"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentStart="true" />
 
 
 
@@ -110,9 +109,8 @@
         android:text="SMW"
         android:textSize="8dp"
         android:id="@+id/button5"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentLeft="@+id/button4"
-        />
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignParentEnd="true" />
 
 
 

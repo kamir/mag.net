@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitocean.etosha.magnet.datamodel.ContextLayer;
+import bitocean.etosha.magnet.datamodel.ContextModel;
 import bitocean.etosha.magnet.helper.ContextLayerLoader;
 import bitocean.etosha.magnet.datamodel.POI;
 import bitocean.etosha.magnet.TakeNote;
@@ -70,16 +71,12 @@ public class MapsActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
     private void setUpMap() {
 
         // where are we currently ???
         POI here = TakeNote.getContextualLocation();
+
+        Log.i("###  POI-DOWNLOADER  ###", "setUpMap() :: " + here.getLabel() );
 
         // we clear the map...
         mMap.clear();
@@ -90,7 +87,10 @@ public class MapsActivity extends FragmentActivity {
         // the contextualized layer is now blended into the map
         ContextLayer l1 = ContextLayer.getTestLayer1();
 
-        ContextLayerLoader.loadDataToMap( mMap, l1 );
+        ContextLayer l2 = ContextLayer.getHighLevelLayerFilterByProject( ContextModel.getCurrentProject() );
+
+//        ContextLayerLoader.loadDataToMap( mMap, l1 );
+        ContextLayerLoader.loadDataToMap( mMap, l2 );
 
     }
 

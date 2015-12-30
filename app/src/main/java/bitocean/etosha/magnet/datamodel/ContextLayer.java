@@ -86,12 +86,18 @@ public class ContextLayer {
      * @return
      */
     public static ContextLayer getHighLevelLayerFilterByProject( String project ) {
+
         ContextLayer cl = new ContextLayer();
 
         // Calculate the right URL for the request ...
         String url = SmwAskUrlFactory.getQuery(cm, "PROJECT", project);
 
+        Log.i("###  Context-Layer  ###", "Show map for PROJECT::" + project );
+
         cl.url = url;
+
+        Log.i("###  Context-Layer  ###", "Load from URL: \n" + url );
+
         return cl;
     }
 
