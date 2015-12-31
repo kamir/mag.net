@@ -4,7 +4,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -240,6 +239,11 @@ public class ContextModel implements LocationListener {
 
     static double[] d = new double[2];
 
+    /**
+     * Here we create the wiki code / MarkDown code for a POI.
+     *
+     * @return
+     */
     public static POI getGeoContextAnnotation() {
 
         POI h = null;
@@ -256,7 +260,10 @@ public class ContextModel implements LocationListener {
 
         }
 
-        String hereSTRING = LatLonConvert.getSMWLabels(location);
+        // the location is translated into the SMW representation ...
+        String hereSTRING = LatLonConvert.getSMWRepresentationOfLocationAsText(location);
+
+        h.setLabel( hereSTRING );
 
         Log.i("LOCATOR.SMW (hereSTRING) => ", hereSTRING );
 

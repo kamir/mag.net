@@ -85,12 +85,13 @@ public class MapsActivity extends FragmentActivity {
         mMap.addMarker(here.getMarker());
 
         // the contextualized layer is now blended into the map
-        ContextLayer l1 = ContextLayer.getTestLayer1();
+        ContextLayer l1 = ContextLayer.getLayer_POIs_for_Project( ContextModel.getCurrentProject() );
 
-        ContextLayer l2 = ContextLayer.getHighLevelLayerFilterByProject( ContextModel.getCurrentProject() );
+        ContextLayerLoader.loadDataToMap( mMap, l1 );
 
-//        ContextLayerLoader.loadDataToMap( mMap, l1 );
-        ContextLayerLoader.loadDataToMap( mMap, l2 );
+        Toast.makeText( this, "Selected POIs: \n" +
+                l1.itemsNoCoordinates + " without coordinates\n" + l1.itemsWithCoordinates + " POIs.",
+                Toast.LENGTH_LONG).show();
 
     }
 

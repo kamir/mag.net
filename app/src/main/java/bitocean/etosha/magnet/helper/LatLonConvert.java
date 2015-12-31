@@ -148,15 +148,33 @@ public class LatLonConvert
 
     }
 
-    public static String getSMWLabels (Location location ) {
+    /**
+     * This label represents the coordinates of a POI or GeoImage
+     * in SMW.
+     */
+    public static String getSMWRepresentationOfLocationAsText(Location location) {
 
         LatLonConvert cLat = new LatLonConvert( location.getLatitude() );
         LatLonConvert cLon = new LatLonConvert( location.getLongitude() );
 
+
         cLat.fromDec2DMS();
         cLon.fromDec2DMS();
 
-        return "[[Has coordinates::" + cLat.getSMWLabel() + ", " + cLon.getSMWLabel()+"]]";
+        StringBuffer sb = new StringBuffer();
+        sb.append( "[[Has coordinates::" + cLat.getSMWLabel() + ", " + cLon.getSMWLabel()+"]]" + "\n" );
+        sb.append( "[[latitude::" + cLat.getSMWLabel() +"]]" + "\n" );
+        sb.append( "[[longitude::" + cLon.getSMWLabel()+"]]" + "\n" );
+        sb.append( "[[altitude::" + location.getAltitude() +"]]" + "\n" );
+        sb.append( "[[locationProvider::" + location.getProvider() +"]]" + "\n" );
+
+        if ( location.hasSpeed() )
+            sb.append( "[[speed::" + location.getSpeed() +"]]" + "\n" );
+
+        if ( location.hasAccuracy() )
+            sb.append( "[[speed::" + location.getAccuracy() +"]]" + "\n" );
+
+        return sb.toString();
     }
 
     public static String getLabels (Location location ) {

@@ -19,6 +19,7 @@ public class POI {
     public POI( String line , int a ) {
 
         init( line );
+
     }
 
 
@@ -84,14 +85,7 @@ public class POI {
 
     }
 
-
-        /**
-         * Overrides the label String. The label is always created from real position data.
-         * @return
-         */
     public String getLabel() {
-        if ( lat == null || lon == null ) return "LOCATION NOT KNOWN";
-        this.label = lat.getSMWLabel() + " " + lon.getSMWLabel();
         return label;
     }
 
