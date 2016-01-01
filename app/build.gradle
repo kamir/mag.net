@@ -5,8 +5,8 @@ android {
     buildToolsVersion "21.1.2"
     defaultConfig {
         applicationId 'bitocean.etosha.magnet'
-        minSdkVersion 17
-        targetSdkVersion 17
+        minSdkVersion 15
+        targetSdkVersion 15
         versionName 'Etosha Mobile Clients'
     }
     buildTypes {

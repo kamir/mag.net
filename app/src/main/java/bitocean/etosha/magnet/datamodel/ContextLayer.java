@@ -117,7 +117,7 @@ public class ContextLayer {
                 for( String item : rows ) {
                     Log.i("###*** Context-Layer ***###", "LINE :: " + item );
 
-                    item = removeLeadingQutes(item);
+                    item = removeLeadingQuotes(item);
 
                     Log.i("###*** Context-Layer ***###", "CLEANED :: " + item);
 
@@ -160,8 +160,16 @@ public class ContextLayer {
 
     }
 
-    private String removeLeadingQutes(String item) {
-        String[] f = item.split()
+    /**
+     * TODO: Does not do anything currently.
+     *
+     * @param item
+     * @return
+     */
+    private String removeLeadingQuotes(String item) {
+        String[] f = item.split("~");
+
+        return item;
 
     }
 
