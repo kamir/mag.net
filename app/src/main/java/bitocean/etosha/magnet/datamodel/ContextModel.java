@@ -15,6 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -279,11 +280,21 @@ public class ContextModel implements LocationListener {
 
         if ( location == null ) {
 
-            here = new POI("DEFAULT LOCATION ***,01 JANUARY 2016,52° 11' 00.00 N,11° 12' 11.11 E, 340.5,DEFAULT;LOCATION", 1);
+            Date date = new Date( System.currentTimeMillis() );
+
+            here = new DefaultLocation("DEFAULT (Home),"+date+",51° 28' 44.00 N,11° 55' 36.00 E, 340.5,Home", 1);
 
         }
         else {
 
+            // TODO: Create individual MarkerFactory, dependent on the query results.
+            //       Load ICON data from Wiki, to be independent from releases and to
+            //       keep a small memory footprint.
+            //
+            //       Files should be cached locally!
+            //
+            // Markers should be based on the "POI" data ....
+            //
             here = new POI( location );
 
         }

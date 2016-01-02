@@ -64,9 +64,16 @@ public class MapsActivity extends FragmentActivity {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
+
+
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
+            }
+            else {
+                Toast.makeText( this, "MAP SERVICE not available!\n",
+                        Toast.LENGTH_LONG).show();
+
             }
         }
     }
@@ -75,6 +82,10 @@ public class MapsActivity extends FragmentActivity {
 
         // where are we currently ???
         POI here = TakeNote.getContextualLocation();
+
+        Toast.makeText( this, ":: MAP SERVICE ::\n" + here.getLabel(),
+                Toast.LENGTH_LONG).show();
+
 
         Log.i("###  POI-DOWNLOADER  ###", "setUpMap() :: " + here.getLabel() );
 

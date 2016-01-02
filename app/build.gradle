@@ -5,8 +5,8 @@ android {
     buildToolsVersion "21.1.2"
     defaultConfig {
         applicationId 'bitocean.etosha.magnet'
-        minSdkVersion 15
-        targetSdkVersion 15
+        minSdkVersion 17
+        targetSdkVersion 17
         versionName 'Etosha Mobile Clients'
     }
     buildTypes {
@@ -16,6 +16,12 @@ android {
         }
     }
     productFlavors {
+        default_API_v17 {
+            minSdkVersion 17
+            applicationId 'bitocean.etosha.magnet'
+            targetSdkVersion 17
+            versionName 'Etosha Mobile Clients'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -25,8 +31,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    releaseCompile files('libs/httpmime-4.2.1.jar')
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile files('libs/httpmime-4.2.1.jar')
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    //    compile 'com.android.support:appcompat-v7:18.0+'
     compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.android.support:support-v4:21.0.3'

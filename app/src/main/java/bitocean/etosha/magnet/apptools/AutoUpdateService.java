@@ -25,7 +25,7 @@ public class AutoUpdateService extends IntentService {
 
     private static final String SERVER_NAME = "semanpix.de";
 
-    private static final String PATH_TO_APK = "/android/magnet.apk";
+    private static final String PATH_TO_APK = "/apps/mag.net/latest/app-default_API_v17-release.apk";
 
     public static final boolean DEBUG = false;
 

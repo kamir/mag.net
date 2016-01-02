@@ -25,7 +25,7 @@ public class POI {
 
     public POI(Location location) {
 
-        String s = LatLonConvert.getPOIString( location );
+        String s = LatLonConvert.getPOIString( location, "NAME", "DATE" );
 
         Log.i("LOCATOR.SMW", s );
 
@@ -99,6 +99,16 @@ public class POI {
     private String label = null;
     private String labelSMW = null;
 
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+
+    /**
+     * Special POIs can overwrite this marker creator ...
+     * @return
+     */
+
     public MarkerOptions getMarker() {
         MarkerOptions m = new MarkerOptions().position(
                 new LatLng( location[0], location[1])
@@ -106,7 +116,4 @@ public class POI {
         return m;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
-    }
 }

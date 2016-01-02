@@ -119,7 +119,7 @@ public class LatLonConvert
         return getDegree() + "° " + getMinute() + "m " + s+"s";
     }
 
-    public static String getPOIString( Location a ) {
+    public static String getPOIString( Location a, String col1, String col2 ) {
 
         LatLonConvert cLat = new LatLonConvert( a.getLatitude() );
         LatLonConvert cLon = new LatLonConvert( a.getLongitude() );
@@ -130,7 +130,7 @@ public class LatLonConvert
         String col3 = cLat.getSMWLabel2().replace(',','.');
         String col4 = cLon.getSMWLabel2().replace(',','.');
 
-        return "col1,col2," + col3 + "," + col4;
+        return col1+","+ col2+ "," + col3 + "," + col4;
 
     }
 

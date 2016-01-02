@@ -28,10 +28,11 @@ public class ContextLayer {
 
 
     public static String testUrl1 = "http://semanpix.de/oldtimer/wiki/index.php?title=Special:Ask/-5B-5BCategory:-20GeoImage-5D-5D-20-5B-5BNotes::-20animals-7C-7Ccars-7C-7Csunlight-5D-5D/-3FDate/-3FLatitude/-3FLongitude/-3FAltitude%3DAltitude(m)/-3FNotes/format%3D-20csv/searchlabel%3D-20Dowload-20CSV-2DFile/offset%3D0";
-    public static String testUrl2 = "http://semanpix.de/opendata/wiki/index.php?title=Special:Ask/-5B-5BCategory:POI-5D-5D-20-5B-5BbelongsToProject::MP1-5D-5D/-3FLatitude/-3FLongitude/-3FAltitude/-3FNotes/format%3Dcsv/offset%3D0";
+
+    public static String testUrl2 = "http://semanpix.de/opendata/wiki/index.php?title=Special:Ask/-5B-5BCategory:POI-5D-5D-20-5B-5BbelongsToProject::MP1-5D-5D/-3FLatitude/-3FLongitude/-3FAltitude/-3FNotes/format%3Dcsv/sep%3D%7E/offset%3D0";
 
     public static String getQueryUrlFor_POIs_in_Project( String project ) {
-        String url = "http://semanpix.de/opendata/wiki/index.php?title=Special:Ask/-5B-5BCategory:POI-5D-5D-20-5B-5BbelongsToProject::"+ project +"-5D-5D/-3FLatitude/-3FLongitude/-3FAltitude/-3FNotes/format%3Dcsv/offset%3D0";
+        String url = "http://semanpix.de/opendata/wiki/index.php?title=Special:Ask/-5B-5BCategory:POI-5D-5D-20-5B-5BbelongsToProject::"+ project +"-5D-5D/-3FLatitude/-3FLongitude/-3FAltitude/-3FNotes/format%3Dcsv/sep%3D%7E/offset%3D0";
         return url;
     }
 
@@ -50,9 +51,9 @@ public class ContextLayer {
 
         // call URI for CSV file
 
-        Vector<String> lines = loadCSVFromURL(url);
+        //Vector<String> lines = loadCSVFromURL(url);
 
-        // Vector<String> lines = getDummyCSVFromURL(url);
+        Vector<String> lines = getDummyCSVFromURL(url);
         int j = 0;
         int i = 0;
 
@@ -169,7 +170,33 @@ public class ContextLayer {
     private String removeLeadingQuotes(String item) {
         String[] f = item.split("~");
 
-        return item;
+        String[] fClean = new String[ f.length ];
+
+        int i = 0;
+        for (String s : f ) {
+            // Strip first "
+            if ( s.startsWith("\"") ) s = s.substring(1);
+
+            // Strip last "
+            int l = s.length();
+            if ( s.endsWith("\"") ) s = s.substring(0, l-1);
+
+            s = s.replace(',','_');
+
+            fClean[i] = s;
+
+
+            i++;
+        }
+
+        String back = fClean[0];
+        for( int ii = 1; ii < fClean.length; ii++ ) {
+            back = back + "," + fClean[ii];
+        }
+
+        // return item;
+
+        return back;
 
     }
 
