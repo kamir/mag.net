@@ -1,4 +1,4 @@
-package bitocean.etosha.magnet.apptools;
+package bitocean.etosha.magnet.apptools.updater.autoupdater;
 
 import android.app.IntentService;
 
@@ -10,8 +10,7 @@ import android.app.IntentService;
         import java.net.Socket;
         import java.sql.Date;
 
-        import android.app.IntentService;
-        import android.content.Intent;
+import android.content.Intent;
         import android.content.pm.PackageInfo;
         import android.content.pm.PackageManager;
         import android.content.pm.PackageManager.NameNotFoundException;

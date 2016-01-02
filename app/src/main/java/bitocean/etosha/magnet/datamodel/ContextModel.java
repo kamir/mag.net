@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Vector;
 
 import bitocean.etosha.magnet.TakeNote;
+import bitocean.etosha.magnet.datamodel.contextmap.DefaultLocation;
+import bitocean.etosha.magnet.datamodel.contextmap.POI;
 import bitocean.etosha.magnet.helper.AppStorage;
 import bitocean.etosha.magnet.helper.LatLonConvert;
 

@@ -1,15 +1,20 @@
 package bitocean.etosha.magnet.subactivities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import bitocean.etosha.magnet.apptools.updater.ManualUpdater;
 import bitocean.etosha.magnet.datamodel.ContextModel;
 import bitocean.etosha.magnet.helper.CustomItemSelectionListener;
 import bitoceanug.etoshamagnet.R;
@@ -24,7 +29,9 @@ public class SettingsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_settings);
 
@@ -88,6 +95,9 @@ public class SettingsActivity extends ActionBarActivity {
         // Spinner item selection Listener
         addListenerOnSpinnerItemSelection();
 
+        addListenerOnButton();
+
+
 //        WebView wv = (WebView)findViewById(R.id.webView);
 //        wv.setBackgroundColor(Color.TRANSPARENT );
 //        wv.getSettings().setJavaScriptEnabled(true);
@@ -106,6 +116,30 @@ public class SettingsActivity extends ActionBarActivity {
 
     }
 
+    Button button;
+
+    public void addListenerOnButton() {
+
+        button = (Button) findViewById(R.id.updateButton);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+             ManualUpdater actualizaApp = new ManualUpdater();
+             actualizaApp.setContext(getApplicationContext());
+             actualizaApp.execute("http://semanpix.de/apps/mag.net/latest/app-default_API_v17-release.apk");
+
+             Intent browserIntent =
+                    new Intent(Intent.ACTION_VIEW, Uri.parse("http://semanpix.de/apps/mag.net/latest/notes.html"));
+             startActivity(browserIntent);
+
+            }
+
+        });
+
+    }
 
 
 

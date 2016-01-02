@@ -1,4 +1,4 @@
-package bitocean.etosha.magnet.datamodel;
+package bitocean.etosha.magnet.datamodel.contextmap;
 
 import android.location.Location;
 import android.util.Log;
@@ -8,8 +8,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import bitoceanug.etoshamagnet.R;
-
-import static com.google.android.gms.maps.model.BitmapDescriptorFactory.fromResource;
 
 /**
  * Created by kamir on 02.01.16.

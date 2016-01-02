@@ -7,8 +7,7 @@ import org.junit.Test;
 import org.junit.runner.Runner;
 import org.junit.runner.RunWith;
 
-import bitocean.etosha.magnet.datamodel.ContextModel;
-import bitocean.etosha.magnet.datamodel.POI;
+import bitocean.etosha.magnet.datamodel.contextmap.POI;
 
 
 /**

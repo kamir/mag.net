@@ -1,11 +1,10 @@
-package bitocean.etosha.magnet.apptools;
+package bitocean.etosha.magnet.apptools.updater.autoupdater;
 
         import android.app.Activity;
         import android.content.Intent;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.View;
-        import android.widget.TextView;
 
         import bitoceanug.etoshamagnet.R;
 

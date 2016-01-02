@@ -4,8 +4,8 @@ import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Vector;
 
-import bitocean.etosha.magnet.datamodel.ContextLayer;
-import bitocean.etosha.magnet.datamodel.POI;
+import bitocean.etosha.magnet.datamodel.contextmap.ContextLayer;
+import bitocean.etosha.magnet.datamodel.contextmap.POI;
 
 /**
  * Created by kamir on 16.01.15.

@@ -1,4 +1,4 @@
-package bitocean.etosha.magnet.datamodel;
+package bitocean.etosha.magnet.datamodel.contextmap;
 
 import android.location.Location;
 import android.util.Log;

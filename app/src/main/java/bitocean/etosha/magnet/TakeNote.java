@@ -63,7 +63,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import bitocean.etosha.magnet.datamodel.ContextModel;
-import bitocean.etosha.magnet.datamodel.POI;
+import bitocean.etosha.magnet.datamodel.contextmap.POI;
 import bitocean.etosha.magnet.helper.LatLonConvert;
 import bitocean.etosha.magnet.semanpics.connector.SemanticGraphStore;
 import bitocean.etosha.magnet.semanpics.connector.impl.smw.MediaWikiService;

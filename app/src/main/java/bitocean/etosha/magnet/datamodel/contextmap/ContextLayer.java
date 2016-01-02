@@ -1,7 +1,6 @@
-package bitocean.etosha.magnet.datamodel;
+package bitocean.etosha.magnet.datamodel.contextmap;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -12,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Vector;
 
+import bitocean.etosha.magnet.datamodel.ContextModel;
 import bitocean.etosha.magnet.helper.AppStorage;
 import bitocean.etosha.magnet.helper.SmwAskUrlFactory;
 

@@ -19,10 +19,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitocean.etosha.magnet.datamodel.ContextLayer;
+import bitocean.etosha.magnet.datamodel.contextmap.ContextLayer;
 import bitocean.etosha.magnet.datamodel.ContextModel;
 import bitocean.etosha.magnet.helper.ContextLayerLoader;
-import bitocean.etosha.magnet.datamodel.POI;
+import bitocean.etosha.magnet.datamodel.contextmap.POI;
 import bitocean.etosha.magnet.TakeNote;
 import bitoceanug.etoshamagnet.R;
 

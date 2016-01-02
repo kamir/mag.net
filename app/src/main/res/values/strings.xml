@@ -10,7 +10,7 @@
     <string name="action_cls">Clear</string>
 
     <string name="title_activity_maps">MAG.net GEO-Context</string>
-    <string name="title_activity_settings">MAG.net Semantic settings</string>
+    <string name="title_activity_settings">MAG.net Settings</string>
 
     <string name="uploaded">Upload was done!</string>
 
