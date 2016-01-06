@@ -62,6 +62,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import bitocean.corpsapp.ContactMapsActivity;
 import bitocean.etosha.magnet.datamodel.ContextModel;
 import bitocean.etosha.magnet.datamodel.contextmap.POI;
 import bitocean.etosha.magnet.helper.LatLonConvert;
@@ -100,6 +101,17 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
     // Android specific object ...
     public static Context appContext = null;
+
+
+    /**
+     *   TODO: Implement the tracking feature.
+     *
+     *   Tracking is simply collecting points from GPS within a
+     *   time interval. Such a trajectory is also a context to which
+     *   Pixnodes can be linked. This happens automatically during tracking mode.
+     */
+    // Has to be changed to turn on tracking mode
+    private boolean isInTrackingMode = false;
 
     public static ImageView getmImageView() {
         return mImageView;
@@ -496,6 +508,9 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
             case R.id.action_context:
                 selectActionContext();
                 return true;
+            case R.id.action_mycontacts:
+                showMyContacts();
+                return true;
             case R.id.action_settings:
                 modifyContextModel();
                 return true;
@@ -519,6 +534,15 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         }
     }
 
+    private void showMyContacts() {
+
+        Intent intent;
+        intent = new Intent( this, ContactMapsActivity.class);
+
+        startActivity(intent);
+
+    }
+
     private void viewRecentChanges() {
 
         String urlRC = wiki.getUriRecentChanges();
@@ -540,6 +564,7 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
 
         Intent intent;
         intent = new Intent( this, SettingsActivity.class);
+
         startActivity(intent);
 
     }
@@ -562,9 +587,21 @@ public class TakeNote extends ActionBarActivity implements SMWUser, LocationList
         latitude.setText( "" + location.getLatitude() );
         longitude.setText( "" + location.getLongitude() );
 
-        textView.setText( LatLonConvert.getLabels(location) );
+        String positionText = LatLonConvert.getLabels(location);
+
+        textView.setText( positionText  );
 
         context.onLocationChanged( location );
+
+        if( isInTrackingMode ) {
+
+            Log.i("TRACKING.TOOL" , "Tracking is on. (" + positionText + ")" );
+
+
+        }
+        else {
+           //  Log.i("TRACKING.TOOL" , "!!! No tracking at this time.");
+        }
     }
 
     @Override

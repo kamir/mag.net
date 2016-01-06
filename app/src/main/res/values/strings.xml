@@ -22,6 +22,7 @@
 	<string name="update_footnote">
         N.B. After the download completes, you must pull down the Status Bar and click on the downloaded apk to install it.
 	</string>
+    <string name="action_mycontacts">Meine Kontakte</string>
 
 
 </resources>
